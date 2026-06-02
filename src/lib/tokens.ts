@@ -28,6 +28,7 @@ import {
   getBurnCheckedInstruction as getBurnCheckedInstructionToken2022,
   getCloseAccountInstruction as getCloseAccountInstructionToken2022,
   getCreateAssociatedTokenIdempotentInstruction,
+  getCreateAssociatedTokenIdempotentInstructionAsync,
 } from "@solana-program/token-2022";
 import { createSolanaRpcFromTransport, KeyPairSigner, TransactionSigner } from "@solana/kit";
 import { sendTransactionFromInstructionsFactory } from "./transactions";
@@ -425,7 +426,7 @@ export const mintTokensFactory = (
     const tokenProgram = useTokenExtensions ? TOKEN_EXTENSIONS_PROGRAM : TOKEN_PROGRAM;
 
     // Create Associated Token Account
-    const createAtaInstruction = await getCreateAssociatedTokenInstructionAsync({
+    const createAtaInstruction = await getCreateAssociatedTokenIdempotentInstructionAsync({
       payer: mintAuthority,
       mint: mintAddress,
       owner: destination,
