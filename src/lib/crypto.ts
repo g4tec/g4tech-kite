@@ -144,10 +144,11 @@ export const checkIfAddressIsPublicKey = async (address: Uint8Array | string | A
     }
 
     // Try to import the key to verify it's a valid Ed25519 public key
+    const publicKeyBytesAux = publicKeyBytes as Uint8Array<ArrayBuffer>;
     try {
       await crypto.subtle.importKey(
         "raw",
-        publicKeyBytes,
+        publicKeyBytesAux,
         {
           name: "Ed25519",
           namedCurve: "Ed25519",
