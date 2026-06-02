@@ -1,6 +1,6 @@
 {
   "name": "g4tech-solana-kite",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "description": "The modern Solana framework for TypeScript.",
   "type": "module",
   "main": "./dist/index.js",
