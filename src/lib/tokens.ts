@@ -27,6 +27,7 @@ import {
   Mint,
   getBurnCheckedInstruction as getBurnCheckedInstructionToken2022,
   getCloseAccountInstruction as getCloseAccountInstructionToken2022,
+  getCreateAssociatedTokenIdempotentInstruction,
 } from "@solana-program/token-2022";
 import { createSolanaRpcFromTransport, KeyPairSigner, TransactionSigner } from "@solana/kit";
 import { sendTransactionFromInstructionsFactory } from "./transactions";
@@ -120,7 +121,7 @@ export const transferTokensFactory = (
     );
 
     // Create an associated token account for the receiver
-    const createAssociatedTokenInstruction = getCreateAssociatedTokenInstruction({
+    const createAssociatedTokenInstruction = getCreateAssociatedTokenIdempotentInstruction({
       ata: destinationAssociatedTokenAddress,
       mint: mintAddress,
       owner: destination,
